@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingreso_detalles extends Model
 {
-    use HasFactory;
+    protected $table = 'ingresos_detalles';
+    protected $fillable = ['id','ingreso_id','articulo_id','cantidad','precio_compra','impuesto','total','total_impuesto','user_id'];
 }

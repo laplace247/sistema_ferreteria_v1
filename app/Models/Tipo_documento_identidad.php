@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tipo_documento_identidad extends Model
 {
-    use HasFactory;
+    protected $table = 'tipo_documento_identidad';
+    protected $fillable = ['id','descripcion'];
 }

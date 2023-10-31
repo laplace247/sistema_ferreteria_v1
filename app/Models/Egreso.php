@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Egreso extends Model
 {
-    use HasFactory;
-}
+    protected $table = 'egresos';
+    protected $fillable = ['id','tipo_documento','cliente_id','serie','fecha','impuesto','total','total_impuesto','user_id'];}
