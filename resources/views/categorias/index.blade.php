@@ -28,7 +28,7 @@
 
 </script>
 <div class="container">
-    <h2>Listado de Articulos</h2>
+    <h2>Listado de Categorias</h2>
     <table class="table" border="1">
         <thead>
             <tr>

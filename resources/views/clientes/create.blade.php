@@ -13,7 +13,7 @@
 
 </script>
 <div class="container">
-        <h2>Crear Articulo</h2>
+        <h2>Crear Cliente</h2>
         <form method="POST" action="{{ route('alumnos.store') }}">
             @csrf
             <div class="form-group">

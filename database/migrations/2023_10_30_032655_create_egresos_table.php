@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('serie');
             $table->string('numero');
             $table->string('fecha');
-            $table->decimal('impuesto', 4, 2);
+            $table->decimal('impuesto', 10, 2);
             $table->string('total');
             $table->decimal('total_impuesto', 10, 2);
             $table->integer('user_id')->nullable();

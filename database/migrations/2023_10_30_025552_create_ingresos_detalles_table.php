@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('articulo_id')->nullable();
             $table->string('cantidad');
             $table->string('precio_compra');
-            $table->decimal('impuesto', 4, 2);
+            $table->decimal('impuesto', 10, 2);
             $table->string('total');
             $table->decimal('total_impuesto', 10, 2);
             $table->integer('user_id')->nullable();
