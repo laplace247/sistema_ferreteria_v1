@@ -19,6 +19,7 @@ use App\Http\Controllers\MatriculaController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,11 +34,6 @@ Route::post('matricula/curso/matricular', [MatriculaController::class,'cursoMatr
 
 Route::get('/main', [MainController::class,'index'])->name('main.index');
 
-Route::get('/', [LoginController::class,'index'])->name('login.index');
-Route::get('/login', [LoginController::class,'index'])->name('login.index');
-Route::post('/login', [LoginController::class,'login'])->name('login.login');
-Route::get('/login/logout', [LoginController::class,'logout'])->name('login.logout');
-
 //CRUD ARTICULOS
 Route::get('alumnos', [ArticuloController::class, 'index'])->name("alumnos.index");
 Route::get('alumnos/create', [ArticuloController::class, 'create'])->name("alumnos.create");
@@ -48,3 +44,6 @@ Route::put('alumnos/{idAlumno}', [ArticuloController::class, 'update'])->name('a
 Route::delete('alumnos/{idAlumno}', [ArticuloController::class, 'destroy'])->name('alumnos.destroy');
 
 //CRUD CATEGORIA
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
