@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('numero');
-            $table->string('tipo_documento_identidad');
+            $table->string('numero');   
+            $table->unsignedBigInteger('tipo_documento_identidad_id');
             $table->string('telefono');
             $table->string('correo_electronico');
             $table->integer('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('tipo_documento_identidad_id')->references('id')->on('tipo_documento_identidades')->cascadeOnDelete();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('proveedores');
     }
 };

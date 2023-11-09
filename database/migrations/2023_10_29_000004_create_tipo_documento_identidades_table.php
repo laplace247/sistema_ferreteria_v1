@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('tipo_documento_identidades', function (Blueprint $table) {
             $table->id();
-            $table->string('correo')->unique();
-            $table->string('password');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('tipo_documento_identidad');
     }
 };

@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingreso_detalles', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->integer('ingreso_id')->nullable();
-            $table->integer('articulo_id')->nullable();
-            $table->string('cantidad');
-            $table->string('precio_compra');
-            $table->decimal('impuesto', 10, 2);
-            $table->string('total');
-            $table->decimal('total_impuesto', 10, 2);
+            $table->string('nombre');
+            $table->string('numero');
+            $table->unsignedBigInteger('tipo_documento_identidad_id');
+            $table->string('telefono');
+            $table->string('correo_electronico');
             $table->integer('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('tipo_documento_identidad_id')->references('id')->on('tipo_documento_identidades')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingreso_detalles');
+        Schema::dropIfExists('clientes');
     }
 };

@@ -19,10 +19,12 @@ return new class extends Migration
             $table->decimal('precio_venta', 10, 2);
             $table->decimal('precio_compra', 10, 2);
             $table->string('imagen');
-            $table->integer('categoria_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
             $table->decimal('stock', 10, 2);
             $table->integer('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('categoria_id')->references('id')->on('categorias')->oncascadeOnDelete();
         });
     }
 

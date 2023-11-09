@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('ingresos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_documento');
-            $table->integer('proveedores_id')->nullable();
+            $table->unsignedBigInteger('tipo_documento_id');
+            $table->unsignedBigInteger('proveedor_id');
             $table->string('serie');
+            $table->string('correlativo');
             $table->string('fecha');    
             $table->decimal('impuesto', 10, 2);
             $table->string('total');
             $table->decimal('total_impuesto', 10, 2);
             $table->integer('users_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documentos')->cascadeOnDelete();
+            $table->foreign('proveedor_id')->references('id')->on('proveedores')->cascadeOnDelete();
         });
     }
 

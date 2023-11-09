@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('egresos_detalles', function (Blueprint $table) {
+        Schema::create('egreso_detalles', function (Blueprint $table) {
             $table->id();
-            $table->integer('ingreso_id')->nullable();
-            $table->integer('articulo_id')->nullable();
+            $table->unsignedBigInteger('egreso_id')->nullable();
+            $table->unsignedBigInteger('articulo_id')->nullable();
             $table->string('cantidad');
             $table->string('precio_venta');
             $table->decimal('impuesto', 10, 2);
@@ -22,6 +22,9 @@ return new class extends Migration
             $table->decimal('total_impuesto', 10, 2);
             $table->integer('user_id')->nullable();
             $table->timestamps();
+            
+            $table->foreign('egreso_id')->references('id')->on('egresos')->cascadeOnDelete();
+            $table->foreign('articulo_id')->references('id')->on('articulos')->cascadeOnDelete();
         });
     }
 

@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('egresos', function (Blueprint $table) {
+        Schema::create('ingreso_detalles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tipo_documento_id');
-            $table->unsignedBigInteger('cliente_id')->nullable();
-            $table->string('serie');
-            $table->string('correlativo');
-            $table->string('fecha');
+            $table->unsignedBigInteger('ingreso_id')->nullable();
+            $table->unsignedBigInteger('articulo_id')->nullable();
+            $table->string('cantidad');
+            $table->string('precio_compra');
             $table->decimal('impuesto', 10, 2);
             $table->string('total');
             $table->decimal('total_impuesto', 10, 2);
             $table->integer('user_id')->nullable();
             $table->timestamps();
-            
 
-            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documentos')->cascadeOnDelete();
-            $table->foreign('cliente_id')->references('id')->on('clientes')->cascadeOnDelete();
+            $table->foreign('ingreso_id')->references('id')->on('ingresos')->cascadeOnDelete();
+            $table->foreign('articulo_id')->references('id')->on('articulos')->cascadeOnDelete();
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('egresos');
+        Schema::dropIfExists('ingreso_detalles');
     }
 };
