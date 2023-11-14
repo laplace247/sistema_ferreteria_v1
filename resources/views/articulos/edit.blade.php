@@ -14,7 +14,7 @@
 </script>
 <div class="container">
         <h2>Editar Articulo</h2>
-        <form method="POST" action="{{ route('alumnos.update', $alumno->id) }}">
+        <form method="POST" action="{{ route('articulos.update', $alumno->id) }}">
             @csrf
             @method('PUT') <!-- Utiliza PUT para la actualización -->
             <div class="form-group">
@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ $alumno->apellidos }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('alumnos.index') }}" class="btn btn-danger">Cancelar</a>
+            <a href="{{ route('articulos.index') }}" class="btn btn-danger">Cancelar</a>
 </div>
 {{-- Manejo de mensajes de error--}}
 @if(session('mensaje'))
