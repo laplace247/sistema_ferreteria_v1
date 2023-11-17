@@ -12,7 +12,7 @@ class ArticuloController extends Controller
             (object)[
                 "id" => 1,
                 "codigo" => "Cod001",
-                "nombre" => "Alicate marca Steel color amarillo",
+                "nombre" => "Alicate de pico de loro azul",
                 "precio_venta" => "20.50",
                 "precio_compra" => "15.50",
                 
@@ -20,7 +20,7 @@ class ArticuloController extends Controller
             (object)[
                 "id" => 2,
                 "codigo" => "Cod002",
-                "nombre" => "Alicate marca Steel color amarillo",
+                "nombre" => "Martillo de mango de acero inoxidable",
                 "precio_venta" => "20.50",
                 "precio_compra" => "15.50",
             ]

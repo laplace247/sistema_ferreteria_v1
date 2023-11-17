@@ -8,16 +8,28 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Dashboard</a>
+                <a class="nav-link" aria-current="page" href="{{ route('home') }}">Menu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('articulos.index') }}">Articulos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="{{ route('articulos.index') }}">Categorias</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="{{ route('articulos.index') }}">Clientes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('articulos.index') }}">Egresos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('articulos.index') }}">Ingresos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('articulos.index') }}">Ventas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('articulos.index') }}">Cerrar sesion</a>
               </li>
             </ul>
           </div>
