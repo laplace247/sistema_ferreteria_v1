@@ -10,4 +10,9 @@ class Proveedor extends Model
     protected $table = 'proveedores';
     protected $fillable = ['id','nombre','numero','tipo_documento','telefono','correo_electronico','user_id'];
 
+    public function ingresos()
+    {
+        return $this->hasMany(Ingreso::class,'proveedor_id');
+    }
+
 }
