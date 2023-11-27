@@ -1,53 +1,57 @@
-@extends('layout')    
+@extends('layouts.app')    
 @section('content')
-<script type="module">
-    
-    import {bootbox_confirm,bootbox_alert} from '/utils/dialog.js'
+<div class="pagetitle">
+    <h1>Articulos</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Nuevo Articulo</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Registrar Articulo</h5>
 
-    function mensajeDeControlador(mensaje){
+      <!-- Multi Columns Form -->
+      <form class="row g-3">
+        <div class="col-md-12">
+          <label for="inputName5" class="form-label">Nombre del producto</label>
+          <input type="text" class="form-control" id="inputName5">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail5" class="form-label">Precio de venta</label>
+          <input type="email" class="form-control" id="inputEmail5">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword5" class="form-label">Precio de compra</label>
+          <input type="password" class="form-control" id="inputPassword5">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress5" class="form-label">Descripcion</label>
+          <textarea type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St"> </textarea>
+        </div>
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label">Codigo</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        <div class="col-md-4">
+          <label for="inputZip" class="form-label">Stock</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Categoria</label>
+            <select id="inputState" class="form-select">
+              <option selected>Option...</option>
+              <option>...</option>
+            </select>
+          </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary">Volver</button>
+        </div>
+      </form><!-- End Multi Columns Form -->
 
-        bootbox_alert(mensaje);
-    }
-
-    window.mensajeDeControlador = mensajeDeControlador;
-
-</script>
-<div class="container">
-        <h2>Crear Articulo</h2>
-        <form method="POST" action="{{ route('alumnos.store') }}">
-            @csrf
-            <div class="form-group">
-                <label for="nombres">Dni</label>
-                <input type="text" class="form-control" id="dni" name="dni" @if(isset($alumno->dni)) value="{{$alumno->dni}}" @endif required>
-            </div>
-            <div class="form-group">
-                <label for="nombres">Nombres</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" @if(isset($alumno->nombres)) value="{{$alumno->nombres}}" @endif required>
-            </div>
-            <div class="form-group">
-                <label for="apellidos">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" @if(isset($alumno->apellidos)) value="{{$alumno->apellidos}}" @endif required>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('alumnos.index') }}" class="btn btn-danger">Cancelar</a>
-        </form>
-        </form>
     </div>
-    {{-- Manejo de mensajes de error--}}
-    @if(session('mensaje'))
-        <script>
-            var mensaje="{{ session('mensaje') }}";
-            window.addEventListener('load', (event) => {
-                window.mensajeDeControlador(mensaje);
-            });
-        </script>
-    @endif
-    @if(isset($mensaje))
-        <script>
-            var mensaje="{{ $mensaje }}";
-            window.addEventListener('load', (event) => {
-                window.mensajeDeControlador(mensaje);
-            });
-        </script>
-    @endif
+  </div>
 @endsection

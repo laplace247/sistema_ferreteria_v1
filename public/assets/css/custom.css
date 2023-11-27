@@ -1,1 +1,13 @@
-/* Archivo para Omar */
+/* Archivo */
+
+.datatable-top {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.datatable-top label {
+    display: flex;
+}
+.datatable-top select {
+    margin-right: 5px;
+}

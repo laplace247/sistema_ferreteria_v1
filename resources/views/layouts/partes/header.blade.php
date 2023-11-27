@@ -1,38 +1,52 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/home">MiFerre</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{ route('home') }}">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Articulos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Categorias</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Clientes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Egresos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Ingresos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Ventas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('articulos.index') }}">Cerrar sesion</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</header>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{{ route('home') }}" class="logo d-flex align-items-center">
+        <img src="/assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">MiFerre</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{ auth()->user()->name }}</h6>
+              <span>{{ auth()->user()->email }}</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Salir</span>
+              </a>
+              <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none">
+                @csrf
+            </form>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->

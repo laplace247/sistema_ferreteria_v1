@@ -16,31 +16,35 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Omar CSS Files -->
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    {{-- <link href="assets/css/style.css" rel="stylesheet"> --}}
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="main container">
+<body>
     @include('layouts.partes.header')
+    @include('layouts.partes.sidebar')
 
-    <aside id="sidebar" class="sidebar">
+    <main id="main" class="main">
         @yield('content')
-    </aside>
+    </main>
+
+    @include('layouts.partes.footer')
+    
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
 
     <!-- Template Main JS File -->
-    {{-- <script src="assets/js/main.js"></script> --}}
+    <script src="/assets/js/main.js"></script>
 
 </body>
 

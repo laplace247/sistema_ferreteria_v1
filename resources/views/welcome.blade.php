@@ -13,7 +13,7 @@
     </head>
     <body class="antialiased">
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                Mi Ferreteria
+                <a href="{{ route('login') }}">Ingresa a tu cuenta aqui</a>
             </div>
         </div>
     </body>
