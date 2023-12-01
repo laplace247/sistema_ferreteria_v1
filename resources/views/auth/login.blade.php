@@ -6,7 +6,7 @@
         <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center login-box">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="pt-4 pb-2">
@@ -16,7 +16,7 @@
 
                                 <form class="row" method="POST" action="{{ route('login') }}">
                                     @csrf
-                                    <div class="col-12">
+                                    <div class="col-12 input-box">
                                         <label for="email" class="form-label">Correo Electronico</label>
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
@@ -29,7 +29,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-12 input-box">
                                         <label for="password" class="form-label">Contraseña</label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                         @error('password')
@@ -48,32 +48,30 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <div class="form-check">
+                                        <div class="form-check remember-forgot">
                                             <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                                 {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="form-check-label" for="remember">
-                                                {{ __('Recuerdame') }}
+                                                {{ __('Recuérdame') }}
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-12 my-3">
                                         <button class="btn btn-primary w-100" type="submit">Ingresar</button>
                                     </div>
-                                    <div class="col-12 text-center">
+                                    <div class="col-12 text-center register-link">
                                         <p class="small mb-0">
                                             ¿No tienes una cuenta?
-                                            <a href="{{ route('register') }}">Registrate</a>
+                                            <a href="{{ route('register') }}">Regístrate</a>
                                         </p>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
     </div>
 @endsection
