@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\MatriculaController;
+
 
 
 
