@@ -19,7 +19,7 @@ class ArticuloController extends Controller
         $this->articulos = [
             (object)[
                 'id' => 1,
-                'categoria' => (object)['nombre' => 'Herramientas'],
+                'categoria' => (object)['id' => 1, 'nombre' => 'Herramientas'],
                 'codigo' => '001',
                 'nombre' => 'Martillo',
                 'precio_venta' => 25.50,
@@ -29,7 +29,7 @@ class ArticuloController extends Controller
             ],
             (object)[
                 'id' => 2,
-                'categoria' => (object)['nombre' => 'Materiales de construcción'],
+                'categoria' => (object)['id' => 2, 'nombre' => 'Materiales de construcción'],
                 'codigo' => '002',
                 'nombre' => 'Ladrillos',
                 'precio_venta' => 0.80,
@@ -39,7 +39,7 @@ class ArticuloController extends Controller
             ],
             (object)[
                 'id' => 3,
-                'categoria' => (object)['nombre' => 'Pinturas'],
+                'categoria' => (object)['id' => 3, 'nombre' => 'Pinturas'],
                 'codigo' => '003',
                 'nombre' => 'Pintura blanca',
                 'precio_venta' => 30.00,
@@ -49,7 +49,7 @@ class ArticuloController extends Controller
             ],
             (object)[
                 'id' => 4,
-                'categoria' => (object)['nombre' => 'Electricidad'],
+                'categoria' => (object)['id' => 4, 'nombre' => 'Electricidad'],
                 'codigo' => '004',
                 'nombre' => 'Cable eléctrico',
                 'precio_venta' => 10.00,
@@ -59,7 +59,7 @@ class ArticuloController extends Controller
             ],
             (object)[
                 'id' => 5,
-                'categoria' => (object)['nombre' => 'Fontanería'],
+                'categoria' => (object)['id' => 5, 'nombre' => 'Fontanería'],
                 'codigo' => '005',
                 'nombre' => 'Tubería de PVC',
                 'precio_venta' => 5.00,
@@ -96,6 +96,19 @@ class ArticuloController extends Controller
 
     public function edit($id)
     {
-        
+        $articulo = collect($this->articulos)->firstWhere('id', $id);
+
+        $categorias = [
+            (object)['id' => 1, 'nombre' => 'Herramientas'],
+            (object)['id' => 2, 'nombre' => 'Materiales de construcción'],
+            (object)['id' => 3, 'nombre' => 'Pinturas'],
+            (object)['id' => 4, 'nombre' => 'Electricidad'],
+            (object)['id' => 5, 'nombre' => 'Fontanería']
+        ];
+
+        return view("articulos.edit", [
+            'articulo'   => $articulo,
+            'categorias' => $categorias,
+        ]);
     }
 }

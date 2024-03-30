@@ -1,60 +1,69 @@
-@extends('layouts.app')    
+@extends('layouts.app')
+
+@php
+    $active = 2;
+@endphp
+
 @section('content')
-<script type="module">
-    
-    import {bootbox_confirm,bootbox_alert} from '/utils/dialog.js'
+<div class="pagetitle">
+    <h1><i class="bi bi-pencil"></i> Actualizar artículo</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('articulos.index') }}">Artículos</a></li>
+            <li class="breadcrumb-item active">Actualizar artículo</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Detalles del artículo</h5>
 
-    function mensajeDeControlador(mensaje){
-
-        bootbox_alert(mensaje);
-    }
-
-    window.mensajeDeControlador = mensajeDeControlador;
-
-</script>
-<div class="container">
-        <h2>Editar Articulo</h2>
-        <form method="POST" action="{{ route('articulos.update', $alumno->id) }}">
+        <!-- Multi Columns Form -->
+        <form class="row g-3 row-p" method="POST" action="#" enctype="multipart/form-data">
             @csrf
-            @method('PUT') <!-- Utiliza PUT para la actualización -->
-            <div class="form-group">
-                <label for="nombres">Codigo</label>
-                <input type="text" class="form-control" id="dni" name="dni" value="{{ $alumno->dni }}" required>
+            <div class="col-md-12">
+                <label for="nombre" class="form-label">Nombre del artículo</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $articulo->nombre }}">
             </div>
-            <div class="form-group">
-                <label for="nombres">Precio de Venta</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" value="{{ $alumno->nombres }}" required>
+            <div class="col-md-6">
+                <label for="precioventa" class="form-label">Precio de venta</label>
+                <input type="text" class="form-control" id="precioventa" name="precioventa"value="{{ $articulo->precio_venta }}">
             </div>
-            <div class="form-group">
-                <label for="apellidos">Precio de Compra</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ $alumno->apellidos }}" required>
+            <div class="col-md-6">
+                <label for="preciocompra" class="form-label">Precio de compra</label>
+                <input type="text" class="form-control" id="preciocompra" name="preciocompra"value="{{ $articulo->precio_compra }}">
             </div>
-            <div class="form-group">
-                <label for="apellidos">Precio de Compra</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ $alumno->apellidos }}" required>
+            <div class="col-12">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea type="text" class="form-control" id="descripcion" name="descripcion">{{ $articulo->descripcion }}</textarea>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-secondary">Volver</button>
+            <div class="col-md-4">
+                <label for="codigo" class="form-label">Código</label>
+                <input type="text" class="form-control" id="codigo" name="codigo"value="{{ $articulo->codigo }}">
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('articulos.index') }}" class="btn btn-danger">Cancelar</a>
-</div>
-{{-- Manejo de mensajes de error--}}
-@if(session('mensaje'))
-<script>
-    var mensaje="{{ session('mensaje') }}";
-    window.addEventListener('load', (event) => {
-        window.mensajeDeControlador(mensaje);
-    });
-</script>
-@endif
-@if(isset($mensaje))
-<script>
-    var mensaje="{{ $mensaje }}";
-    window.addEventListener('load', (event) => {
-        window.mensajeDeControlador(mensaje);
-    });
-</script>
-@endif
+            <div class="col-md-4">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="text" class="form-control" id="stock" name="stock"value="{{ $articulo->stock }}">
+            </div>
+            <div class="col-md-4">
+                <label for="categoria_id" class="form-label">Categoría</label>
+                <select id="categoria_id" class="form-select" name="categoria_id">
+                @foreach ($categorias as $categoria)
+                    <option {{ $articulo->categoria->id == $categoria->id ? 'selected' : '' }} value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                @endforeach
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imagen" name="imagen" />
+            </div>
+            <div class="confirm-register">
+                <button type="submit" class="btn btn-primary btn-p"><i class="bi bi-check-circle-fill"></i>&nbsp;&nbsp;Actualizar artículo</button>
+                <a href="{{ route('articulos.index') }}" class="btn btn-secondary btn-p"><i class="bi bi-arrow-left-circle-fill"></i>&nbsp;&nbsp;Volver</a>
+            </div>
+        </form><!-- End Multi Columns Form -->
+
+        </div>
+    </div>
 @endsection
