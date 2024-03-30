@@ -47,12 +47,11 @@
                                         <td>S/. {{ $articulo->precio_compra }}</td>
                                         <td>
                                             <div class="actions-buttons">
-                                                <form action="{{ route('articulos.show', $articulo->id) }}" method="GET" style="display: inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary">
+                                                <div>
+                                                    <a href="{{ route('articulos.show', ['idArticulo' => $articulo->id]) }}" class="btn btn-primary">
                                                         <i class="bi bi-eye"></i>
-                                                    </button>
-                                                </form>
+                                                    </a>
+                                                </div>
                             
                                                 {{-- <form action="{{ route('articulos.edit', $articulo->id) }}" method="GET" style="display: inline;">
                                                     @csrf --}}

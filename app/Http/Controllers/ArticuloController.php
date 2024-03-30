@@ -10,21 +10,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ArticuloController extends Controller
 {
+    public $articulos;
+
     public function __construct()
     {
         $this->middleware('auth');
-    }
 
-    public function index()
-    {
-        $articulos = [
+        $this->articulos = [
             (object)[
                 'id' => 1,
                 'categoria' => (object)['nombre' => 'Herramientas'],
                 'codigo' => '001',
                 'nombre' => 'Martillo',
                 'precio_venta' => 25.50,
-                'precio_compra' => 15.00
+                'precio_compra' => 15.00,
+                'stock' => 35,
+                'descripcion' => 'Leer más sobre artículo 1',
             ],
             (object)[
                 'id' => 2,
@@ -32,7 +33,9 @@ class ArticuloController extends Controller
                 'codigo' => '002',
                 'nombre' => 'Ladrillos',
                 'precio_venta' => 0.80,
-                'precio_compra' => 0.50
+                'precio_compra' => 0.50,
+                'stock' => 20,
+                'descripcion' => 'Leer más sobre artículo 2',
             ],
             (object)[
                 'id' => 3,
@@ -40,7 +43,9 @@ class ArticuloController extends Controller
                 'codigo' => '003',
                 'nombre' => 'Pintura blanca',
                 'precio_venta' => 30.00,
-                'precio_compra' => 20.00
+                'precio_compra' => 20.00,
+                'stock' => 2,
+                'descripcion' => 'Leer más sobre artículo 3',
             ],
             (object)[
                 'id' => 4,
@@ -48,7 +53,9 @@ class ArticuloController extends Controller
                 'codigo' => '004',
                 'nombre' => 'Cable eléctrico',
                 'precio_venta' => 10.00,
-                'precio_compra' => 7.50
+                'precio_compra' => 7.50,
+                'stock' => 18,
+                'descripcion' => 'Leer más sobre artículo 4',
             ],
             (object)[
                 'id' => 5,
@@ -56,16 +63,23 @@ class ArticuloController extends Controller
                 'codigo' => '005',
                 'nombre' => 'Tubería de PVC',
                 'precio_venta' => 5.00,
-                'precio_compra' => 3.00
+                'precio_compra' => 3.00,
+                'stock' => 12,
+                'descripcion' => 'Leer más sobre artículo 5',
             ]
         ];
+    }
 
-        return view("articulos.index", compact("articulos"));
+    public function index()
+    {
+        return view("articulos.index", ['articulos' => $this->articulos]);
     }
 
     public function show($id)
     {
-        
+        $articulo = collect($this->articulos)->firstWhere('id', $id);
+
+        return view("articulos.show", ['articulo' => $articulo]);
     }
 
     public function create()
