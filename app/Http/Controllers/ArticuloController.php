@@ -70,7 +70,14 @@ class ArticuloController extends Controller
 
     public function create()
     {
-        
+        $categorias = [
+            (object)['id' => 1, 'nombre' => 'Herramientas'],
+            (object)['id' => 2, 'nombre' => 'Materiales de construcción'],
+            (object)['id' => 3, 'nombre' => 'Pinturas'],
+            (object)['id' => 4, 'nombre' => 'Electricidad'],
+            (object)['id' => 5, 'nombre' => 'Fontanería']
+        ];
+        return view("articulos.create", compact("categorias"));
     }
 
     public function edit($id)
