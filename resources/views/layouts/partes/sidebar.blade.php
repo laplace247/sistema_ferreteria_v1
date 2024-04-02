@@ -19,7 +19,7 @@
               <i class="bi bi-circle"></i><span>Artículos</span>
             </a>
           </li>
-            <a href="#" class="{{ $active == 3 ? 'active' : '' }}">
+            <a href="{{ route('categorias.index') }}" class="{{ $active == 3 ? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Categorías</span>
             </a>
           </li>
